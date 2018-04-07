@@ -2,6 +2,22 @@ PowerManagement
 ===============
 Plugin for Cordova (3.0+)
 
+if( ionic.Platform.isAndroid() ){
+cordova.plugins.backgroundMode.enable();
+
+window.powerManagement.dim(function() {
+  console.log('Wakelock acquired');
+}, function() {
+  console.log('Failed to acquire wakelock');
+});
+window.powerManagement.setReleaseOnPause(false, function() {
+  console.log('setReleaseOnPause successfully');
+}, function() {
+  console.log('Failed to set');
+});
+
+}
+
 The PowerManagement plugin offers access to the devices power-management functionality.
 It should be used for applications which keep running for a long time without any user interaction.
 
